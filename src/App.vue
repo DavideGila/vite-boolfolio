@@ -5,11 +5,31 @@
 </template>
 
 <script>
-    export default {
-        name: 'App',
+import axios from 'axios';
+import { store } from './router/store'
+
+export default {
+    name: 'App',
+    data() {
+        return {
+            store,
+            projects: [],
+        }
+    },
+    methods: {
+        getAllProjects() {
+            axios.get(store.apiUrl + '/projects', { params: { 'page': this.currentPage } }).then((res) => {
+                console.log(res.data);
+                this.projects = res.data.results.data;
+                console.log(this.projects)
+            })
+        },
+
+    },
+    mounted() {
+        this.getAllProjects();
     }
+}
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>./router/store
