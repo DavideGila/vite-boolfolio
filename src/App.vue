@@ -18,9 +18,9 @@ export default {
     },
     methods: {
         getAllProjects() {
-            axios.get(store.apiUrl + '/projects', { params: { 'page': this.currentPage } }).then((res) => {
+            axios.get(store.apiUrl + '/projects').then((res) => {
                 console.log(res.data);
-                this.projects = res.data.results.data;
+                this.projects = res.data.results;
                 console.log(this.projects)
             })
         },
