@@ -1,14 +1,22 @@
 <template>
-    <div>
+    <header>
         <AppHeader />
+    </header>
+
+    <main>
         <router-view></router-view>
-    </div>
+    </main>
+
+    <footer>
+        <AppFooter />
+    </footer>
 </template>
 
 <script>
 import axios from 'axios';
 import { store } from './router/store';
 import AppHeader from './components/AppHeader.vue';
+import AppFooter from './components/AppFooter.vue';
 
 export default {
     name: 'App',
@@ -29,7 +37,8 @@ export default {
 
     },
     components: {
-        AppHeader
+        AppHeader,
+        AppFooter
     },
     mounted() {
         this.getAllProjects();
